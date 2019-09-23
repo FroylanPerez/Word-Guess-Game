@@ -2,52 +2,89 @@ var words = [
     "anthrax",
     "slayer",
     "motorhead",
-    "megadeth"
+    "megadeth",
+    "rammstein"
     ];
+
+    // Variable to kepp count fot wrong answers
+    var wrongLetter = 0;
+
 
     // Variables to insert text in HTML
     var wordGuessText = document.getElementById("wordGuess");
+    var okWordText = document.getElementById("okWord");
     var lettersWrongText = document.getElementById("lettersWrong");
     var remainingAttemptsText = document.getElementById("remainingAttempts");
+
+    // Experiment with one single posible word
+    // var possibleWord = "anthrax";
+    // var wordLength = possibleWord.length;
+
+    // Variables for keep tracking for win and loss
+    // var remainingAttempts = 12
+    // var wins = 0
+            
 
 
     // Pick a random word
     var word = words[Math.floor(Math.random() * words.length)];
+    var wordLength = word.length;
+
     // Set up the answer array
     var answerArray = [];
-    for (var i = 0; i < word.length; i++) {
+    for (var i = 0; i < wordLength; i++) {
     answerArray[i] = "_";
+    wordGuessText.textContent = answerArray.join(" ");
     }
-    var remainingLetters = word.length;
-    // The game loop
-    while (remainingLetters > 0) {
-    // Show the player their progress
-    wordGuessText.textContent = (answerArray.join(" "));
 
-    // alert(answerArray.join(" ")); <-- Asi estaba originalmente
+    // var remainingLetters = "";
 
-    // Get a guess from the player
-    var guess = event.key;
+    document.onkeyup = function(event) {
+        var guess = event.key;
+        for (i = 0; i < wordLength; i++) {
+           if (guess === word[i]) {
+                answerArray[i] = guess;
+                wordGuessText.textContent = answerArray.join(" ");
+           }
+           else {
+               wrongLetter++;
+           }
 
-    // var guess = prompt("Guess a letter, or click Cancel to stop playing."); <-- Asi estaba originalmente
-    // if (guess === null) {
-    // // Exit the game loop
-    // break;
-    // } else if (guess.length !== 1) {
-    // alert("Please enter a single letter."); 
-    // } else {  <----------------------------------------------------
-
-    // Update the game state with the guess
-    for (var j = 0; j < word.length; j++) {
-    if (word[j] === guess) {
-    answerArray[j] = guess;
-    remainingLetters--;
-             }
+        //    else {
+        //         wrongLetter++;
+        //    }
+        //     // Show wrong letters acumalted
+        //     lettersWrongText.textContent = "You have clicked: " + wrongLetter + " wrong letters in this tried";
         }
-    
-    // The end of the game loop
- }
- // Show the answer and congratulate the player
 
-//  alert(answerArray.join(" "));  <---- Asi estaba originalmente
-//  alert("Good job! The answer was " + word);  <---- Asi estaba originalmente
+    }    
+    lettersWrongText.textContent = "You have clicked: " + wrongLetter + " wrong letters in this tried";
+
+
+    //     for (i=0; i < wordLength; i++) {
+    //         if (guess !== word[i]) {
+    //             wrongLetter++;
+    //         }
+    //     lettersWrongText.textContent = "You have clicked: " + wrongLetter + " wrong letters in this tried";
+    //     }
+    // }
+
+
+
+    // The game loop
+//     while (remainingLetters > 0) {
+//     // Show the player their progress
+//     wordGuessText.textContent = (answerArray.join(" "));
+
+//     // Update the game state with the guess
+//     for (var k = 0; j < word.length; k++) {
+//     if (word[k] === guess) {
+//     answerArray[k] = guess;
+//     remainingLetters--;
+//              }
+//         }
+    
+//     // The end of the game loop
+//  }
+ // Show the answer and congratulate the player
+    
