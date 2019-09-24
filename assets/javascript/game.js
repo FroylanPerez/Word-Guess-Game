@@ -3,7 +3,12 @@ var words = [
     "slayer",
     "motorhead",
     "megadeth",
-    "rammstein"
+    "rammstein",
+    "pantera",
+    "arkona",
+    "ministry",
+    "moonspell",
+    "metallica"
     ];
 
     // Variable to kepp count fot wrong answers
@@ -30,6 +35,7 @@ var words = [
     var word = words[Math.floor(Math.random() * words.length)];
     var wordLength = word.length;
 
+
     // Set up the answer array
     var answerArray = [];
     for (var i = 0; i < wordLength; i++) {
@@ -40,29 +46,32 @@ var words = [
     // var remainingLetters = "";
 
     document.onkeyup = function(event) {
+        var guessedLetter = false;
         var guess = event.key;
-        if (guess === word[i]) {
-            wrongLetter;
-        }
-        else {
-            wrongLetter++;
-        }
-        lettersWrongText.textContent = "You have clicked: " + wrongLetter + " wrong letters in this tried";
-    
         for (i = 0; i < wordLength; i++) {
             if (guess === word[i]) {
                 answerArray[i] = guess;
                 wordGuessText.textContent = answerArray.join(" ");
-                
+                guessedLetter = true;
             }
-        //     // Show wrong letters acumalted
+                    //     // Show wrong letters acumalted
         //     lettersWrongText.textContent = "You have clicked: " + wrongLetter + " wrong letters in this tried";
-            if (answerArray[i] === word[i]) {
-                congratulationsText.textContent = "CONGRATULATIONS";
-            }
-                else {
-                    congratulationsText.textContent = "BOOOOOOOO!!!!";
-                }
+            // if (answerArray[i] === word[i]) {
+            //     congratulationsText.textContent = "CONGRATULATIONS";
+            // }
+            // else {
+            //     guessedLetter = false;
+            // }
+        }
+
+        if (guessedLetter == true) {
+            congratulationsText.textContent = "CONGRATULATIONS";            
+
+        }
+        else {
+            congratulationsText.textContent = "BOOOOOOOO!!!!";
+            wrongLetter++;
+            lettersWrongText.textContent = "You have clicked: " + wrongLetter + " wrong letters in this tried";
         }
     }    
 
