@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HangMan!</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body background="assets/images/whiteblue.jpg">
+
+    <audio src="assets/audio/painKiller.mp3" autoplay loop preload="auto"></audio>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Try to guess my favorite Metal Bands <span class="badge badge-secondary">HangMan!!</span></h1>
+                <hr size="3px" color="#777777">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <img src="assets/images/poster.jpg">
+            </div>
+            <div class="col-md-6 container-clip">
+                <h1 class="intro">Let´s Play!!</h1>
+                <p id="wordGuess"></p>
+                <p id="okWord"></p>
+                <p id="lettersWrong"></p>
+                <p id="congratulations"></p>
+            </div>
+        </div>
+
+    </div>
+
+<script src="assets/javascript/game.js"></script>
+
+</body>
+</html>

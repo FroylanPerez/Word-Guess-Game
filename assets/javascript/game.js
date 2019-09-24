@@ -14,7 +14,7 @@ var words = [
     var wordGuessText = document.getElementById("wordGuess");
     var okWordText = document.getElementById("okWord");
     var lettersWrongText = document.getElementById("lettersWrong");
-    var remainingAttemptsText = document.getElementById("remainingAttempts");
+    var congratulationsText = document.getElementById("congratulations");
 
     // Experiment with one single posible word
     // var possibleWord = "anthrax";
@@ -41,24 +41,33 @@ var words = [
 
     document.onkeyup = function(event) {
         var guess = event.key;
+        if (guess === word[i]) {
+            wrongLetter;
+        }
+        else {
+            wrongLetter++;
+        }
+        lettersWrongText.textContent = "You have clicked: " + wrongLetter + " wrong letters in this tried";
+    
         for (i = 0; i < wordLength; i++) {
-           if (guess === word[i]) {
+            if (guess === word[i]) {
                 answerArray[i] = guess;
                 wordGuessText.textContent = answerArray.join(" ");
-           }
-           else {
-               wrongLetter++;
-           }
-
-        //    else {
-        //         wrongLetter++;
-        //    }
+                
+            }
         //     // Show wrong letters acumalted
         //     lettersWrongText.textContent = "You have clicked: " + wrongLetter + " wrong letters in this tried";
+            if (answerArray[i] === word[i]) {
+                congratulationsText.textContent = "CONGRATULATIONS";
+            }
+                else {
+                    congratulationsText.textContent = "BOOOOOOOO!!!!";
+                }
         }
-
     }    
-    lettersWrongText.textContent = "You have clicked: " + wrongLetter + " wrong letters in this tried";
+
+
+
 
 
     //     for (i=0; i < wordLength; i++) {
